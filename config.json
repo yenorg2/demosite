@@ -1,22 +1,4 @@
 {
-  "author": {
-    "host": "localhost",
-    "port": 4502,
-    "user": "admin",
-    "password": "admin"
-  },
-  "frontend": {
-    "devServerPort": 3000,
-    "publicPath": "http://localhost:3000",
-    "useProxy": true,
-    "proxyTarget": "http://localhost:4502"
-  },
-  "project": {
-    "name": "aem-boilerplate-commerce",
-    "appId": "aem-commerce",
-    "packageName": "com.mycompany.aem-commerce",
-    "groupId": "com.mycompany"
-  },
   "public": {
     "default": {
       "commerce-core-endpoint": "https://www.aemshop.net/graphql",
