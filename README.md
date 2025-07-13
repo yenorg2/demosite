@@ -1,3 +1,5 @@
+- https://content.da.live/yenorg2/demosite/
+- https://da.live/edit#/yenorg2/demosite{{pathname}}
 # Edge Delivery Services + Adobe Commerce Boilerplate
 This project boilerplate is for Edge Delivery Services projects that integrate with Adobe Commerce.
 
