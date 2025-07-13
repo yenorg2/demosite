@@ -1,5 +1,5 @@
 mountpoints:
-  /: https://drive.google.com/drive/u/0/folders/1bLoadkdj-dfg3Y_hh_TkOm2PA6b6nWnk
+  /: - https://content.da.live/yenorg2/demosite/
 
 folders:
   /products/: /products/default
