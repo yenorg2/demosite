@@ -1,5 +1,7 @@
 mountpoints:
-  /: https://content.da.live/yenorg2/demosite/
-  
+  /:
+    url: https://content.da.live/yenorg2/demosite/
+    type: markup
+
 folders:
   /products/: /products/default
