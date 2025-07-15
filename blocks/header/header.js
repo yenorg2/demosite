@@ -325,8 +325,15 @@ export default async function decorate(block) {
     }
   });
 
+  const mesHeader = document.createElement('div');
+  mesHeader.classList.add('wrapper-top-message');
+  mesHeader.innerHTML = '<p class="top-message">NEW Spring Summer Sheets ></p>';
+  // document.querySelector('.header').append(mesHeader);
+  // document.querySelector('header').insertAdjacentElement('afterbegin', mesHeader);  
+
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
+  navWrapper.prepend(mesHeader);
   navWrapper.append(nav);
   block.append(navWrapper);
 

@@ -24,6 +24,124 @@ function toggleStoreDropdown(sections, expanded = false) {
 }
 
 /**
+ * Initialize footer accordion functionality
+ * @param {Element} block The footer block element
+ */
+function initializeFooterAccordion(block) {
+  // Store event listeners for cleanup
+  let clickListeners = [];
+  let keydownListeners = [];
+  let currentMode = window.innerWidth < 600 ? 'mobile' : 'desktop';
+
+  function setupMobileMode() {
+    // Hide all ul elements initially
+    const allUlElements = block.querySelectorAll('.block-footer-links ul');
+    allUlElements.forEach(ul => {
+      ul.style.display = 'none';
+    });
+
+    // Add click event listeners to all h3 elements
+    const allH3Elements = block.querySelectorAll('.block-footer-links h3');
+    allH3Elements.forEach(h3 => {
+      // Add cursor pointer to indicate clickable
+      h3.style.cursor = 'pointer';
+
+      // Create click event listener
+      const clickListener = function () {
+        const ul = this.nextElementSibling;
+        if (ul && ul.tagName === 'UL') {
+          // Toggle visibility
+          if (ul.style.display === 'none' || ul.style.display === '') {
+            ul.style.display = 'block';
+            this.setAttribute('aria-expanded', 'true');
+          } else {
+            ul.style.display = 'none';
+            this.setAttribute('aria-expanded', 'false');
+          }
+        }
+      };
+
+      // Create keydown event listener
+      const keydownListener = function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.click();
+        }
+      };
+
+      // Add event listeners
+      h3.addEventListener('click', clickListener);
+      h3.addEventListener('keydown', keydownListener);
+
+      // Store listeners for cleanup
+      clickListeners.push({ element: h3, listener: clickListener });
+      keydownListeners.push({ element: h3, listener: keydownListener });
+
+      // Set initial aria-expanded state
+      h3.setAttribute('aria-expanded', 'false');
+      h3.setAttribute('tabindex', '0');
+      h3.setAttribute('role', 'button');
+    });
+  }
+
+  function setupDesktopMode() {
+    // Show all ul elements
+    const allUlElements = block.querySelectorAll('.block-footer-links ul');
+    allUlElements.forEach(ul => {
+      ul.style.display = 'block';
+    });
+
+    // Remove mobile-specific attributes and event listeners
+    const allH3Elements = block.querySelectorAll('.block-footer-links h3');
+    allH3Elements.forEach(h3 => {
+      h3.style.cursor = 'default';
+      h3.removeAttribute('aria-expanded');
+      h3.removeAttribute('tabindex');
+      h3.removeAttribute('role');
+    });
+
+    // Clean up event listeners
+    clickListeners.forEach(({ element, listener }) => {
+      element.removeEventListener('click', listener);
+    });
+    keydownListeners.forEach(({ element, listener }) => {
+      element.removeEventListener('keydown', listener);
+    });
+
+    // Clear arrays
+    clickListeners = [];
+    keydownListeners = [];
+  }
+
+  // Initialize based on current screen size
+  if (currentMode === 'mobile') {
+    setupMobileMode();
+  } else {
+    setupDesktopMode();
+  }
+
+  // Handle window resize with debouncing
+  let resizeTimeout;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function () {
+      const newMode = window.innerWidth < 600 ? 'mobile' : 'desktop';
+
+      if (newMode !== currentMode) {
+        currentMode = newMode;
+        if (newMode === 'mobile') {
+          // Switch to mobile mode
+          setupMobileMode();
+        } else {
+          // Switch to desktop mode
+          setupDesktopMode();
+        }
+      }
+    }, 250); // Debounce resize events
+  });
+}
+
+/**
  * loads and decorates the footer
  * @param {Element} block The footer block element
  */
@@ -169,4 +287,7 @@ export default async function decorate(block) {
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
   block.append(footer);
+
+  // Initialize footer accordion functionality
+  initializeFooterAccordion(block);
 }
