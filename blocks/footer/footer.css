@@ -23,7 +23,7 @@ footer .footer p {
     margin-bottom: var(--spacing-big);
 }
 
-.block-footer-links>div {
+.block-footer-links .columns  >div {
     display: flex;
     flex-wrap: wrap;
     gap: var(--spacing-small);
@@ -31,7 +31,7 @@ footer .footer p {
 }
 
 /* Footer Links Sections - Each block takes 1/3 width with adjusted gap */
-.block-footer-links>div>div {
+.block-footer-links .columns  >div>div {
     flex: 0 0 calc((100% - 2 * var(--spacing-medium)) / 3);
     min-width: 0;
 }
@@ -224,7 +224,7 @@ footer .footer p {
 
 /* Mobile: Stack vertically */
 @media (width < 600px) {
-    .block-footer-links>div>div {
+    .block-footer-links .columns >div>div {
         flex: 0 0 100%;
     }
 }
