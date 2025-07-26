@@ -333,7 +333,7 @@ export default async function decorate(block) {
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
-  navWrapper.prepend(mesHeader);
+  navWrapper.prepend(mesHeader); //test
   navWrapper.append(nav);
   block.append(navWrapper);
 
