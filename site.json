@@ -1,92 +1,88 @@
 {
-    "version": 1,
-    "code": {
-        "owner": "yenorg2",
-        "repo": "demosite",
-        "source": {
-            "type": "github",
-            "url": "https://github.com/yenorg2/demosite"
-        }
-    },
-    "content": {
-        "source": {
-            "url": "https://drive.google.com/drive/u/0/folders/1bLoadkdj-dfg3Y_hh_TkOm2PA6b6nWnk",
-            "type": "google"
-        }
-    },
-    "folders": {
-        "/products/": "/products/default"
-    },
-    "cdn": {
-        "live": {
-            "host": "main--demosite--yenorg2.aem.live"
-        },
-        "preview": {
-            "host": "main--demosite--yenorg2.aem.page"
-        }
-    },
-    "headers": {},
-    "public": {
-        "default": {
-            "commerce-core-endpoint": "https://www.aemshop.net/graphql",
-            "commerce-endpoint": "https://www.aemshop.net/cs-graphql",
-            "headers": {
-                "all": {
-                    "Store": "default"
-                },
-                "cs": {
-                    "Magento-Customer-Group": "b6589fc6ab0dc82cf12099d1c2d40ab994e8410c",
-                    "Magento-Store-Code": "main_website_store",
-                    "Magento-Store-View-Code": "default",
-                    "Magento-Website-Code": "base",
-                    "x-api-key": "4dfa19c9fe6f4cccade55cc5b3da94f7",
-                    "Magento-Environment-Id": "f38a0de0-764b-41fa-bd2c-5bc2f3c7b39a"
-                }
-            },
-            "analytics": {
-                "base-currency-code": "USD",
-                "environment": "Production",
-                "store-id": 1,
-                "store-name": "Main Website Store",
-                "store-url": "https://www.aemshop.net",
-                "store-view-id": 1,
-                "store-view-name": "Default Store View",
-                "website-id": 1,
-                "website-name": "Main Website"
-            },
-            "plugins": {
-                "picker": {
-                    "rootCategory": "2"
-                }
-            }
-        }
-    },
-    "robots": {
-        "txt": "User-agent: *\nAllow: /\nDisallow: /drafts/\nDisallow: /enrichment/\nDisallow: /tools/\nDisallow: /plugins/experimentation/\n\nSitemap: https://main--demosite--yenorg2.aem.live/sitemap-index.xml"
-    },
-    "sidekick": {
-        "project": "Demosite",
-        "plugins": [
-            {
-                "id": "cif",
-                "title": "Commerce",
-                "environments": [
-                    "edit"
-                ],
-                "url": "https://main--demosite--yenorg2.aem.live/tools/picker/dist/index.html",
-                "isPalette": true,
-                "paletteRect": "top: 54px; left: 5px; bottom: 5px; width: 300px; height: calc(100% - 59px); border-radius: var(--hlx-sk-button-border-radius); overflow: hidden; resize: horizontal;"
-            }
-        ]
-    },
-    "access": {
-        "admin": {
-            "role": {
-                "config_admin": [
-                    "admin@example.com"
-                ]
-            },
-            "requireAuth": "auto"
-        }
+  "version": 1,
+  "code": {
+    "owner": "yenorg2",
+    "repo": "demosite",
+    "source": {
+      "type": "github",
+      "url": "https://github.com/yenorg2/demosite"
     }
+  },
+  "content": {
+    "source": {
+      "url": "https://drive.google.com/drive/u/0/folders/1bLoadkdj-dfg3Y_hh_TkOm2PA6b6nWnk",
+      "type": "google"
+    }
+  },
+  "folders": {
+    "/products/": "/products/default"
+  },
+  "cdn": {
+    "live": {
+      "host": "main--demosite--yenorg2.aem.live"
+    },
+    "preview": {
+      "host": "main--demosite--yenorg2.aem.page"
+    }
+  },
+  "headers": {},
+  "public": {
+    "default": {
+      "commerce-core-endpoint": "https://www.aemshop.net/graphql",
+      "commerce-endpoint": "https://www.aemshop.net/cs-graphql",
+      "headers": {
+        "all": {
+          "Store": "default"
+        },
+        "cs": {
+          "Magento-Customer-Group": "b6589fc6ab0dc82cf12099d1c2d40ab994e8410c",
+          "Magento-Store-Code": "main_website_store",
+          "Magento-Store-View-Code": "default",
+          "Magento-Website-Code": "base",
+          "x-api-key": "4dfa19c9fe6f4cccade55cc5b3da94f7",
+          "Magento-Environment-Id": "f38a0de0-764b-41fa-bd2c-5bc2f3c7b39a"
+        }
+      },
+      "analytics": {
+        "base-currency-code": "USD",
+        "environment": "Production",
+        "store-id": 1,
+        "store-name": "Main Website Store",
+        "store-url": "https://www.aemshop.net",
+        "store-view-id": 1,
+        "store-view-name": "Default Store View",
+        "website-id": 1,
+        "website-name": "Main Website"
+      },
+      "plugins": {
+        "picker": {
+          "rootCategory": "2"
+        }
+      }
+    }
+  },
+  "robots": {
+    "txt": "User-agent: *\nAllow: /\nDisallow: /drafts/\nDisallow: /enrichment/\nDisallow: /tools/\nDisallow: /plugins/experimentation/\n\nSitemap: https://main--demosite--yenorg2.aem.live/sitemap-index.xml"
+  },
+  "sidekick": {
+    "project": "Demosite",
+    "plugins": [
+      {
+        "id": "cif",
+        "title": "Commerce",
+        "environments": ["edit"],
+        "url": "https://main--demosite--yenorg2.aem.live/tools/picker/dist/index.html",
+        "isPalette": true,
+        "paletteRect": "top: 54px; left: 5px; bottom: 5px; width: 300px; height: calc(100% - 59px); border-radius: var(--hlx-sk-button-border-radius); overflow: hidden; resize: horizontal;"
+      }
+    ]
+  },
+  "access": {
+    "admin": {
+      "role": {
+        "config_admin": ["admin@example.com"]
+      },
+      "requireAuth": "auto"
+    }
+  }
 }

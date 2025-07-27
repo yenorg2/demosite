@@ -104,7 +104,7 @@
 }
 
 .demo-template__product-description {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--color-neutral-600);
     margin-bottom: var(--spacing-small);
     line-height: 1.5;
@@ -131,7 +131,7 @@
     padding: var(--spacing-small) var(--spacing-medium);
     border: none;
     border-radius: 6px;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -144,7 +144,7 @@
 
 .demo-template__button.primary {
     background: var(--color-primary-600);
-    color: white;
+    color: black;
 }
 
 .demo-template__button.primary:hover {

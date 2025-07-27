@@ -2,6 +2,9 @@ import { readBlockConfig } from "../../scripts/aem.js";
 import { performCatalogServiceQuery } from "../../scripts/commerce.js";
 import { rootLink } from "../../scripts/scripts.js";
 
+// Initialize cart functionality
+import "../../scripts/initializers/cart.js";
+
 // Query để lấy 3 products bất kỳ
 const productsQuery = `query GetRandomProducts($pageSize: Int = 3) {
   productSearch(current_page: 1, page_size: $pageSize, phrase: "") {
@@ -141,10 +144,61 @@ export default async function decorate(block) {
     // Handle button actions
     const addToCartButtons = block.querySelectorAll(".add-to-cart");
     addToCartButtons.forEach((button) => {
-      button.addEventListener("click", (e) => {
+      button.addEventListener("click", async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         const sku = e.target.dataset.sku;
         console.log("Add to cart:", sku);
-        alert(`Product ${sku} has been added to cart!`);
+
+        // Add visual feedback
+        const originalText = e.target.textContent;
+        e.target.textContent = "Adding...";
+        e.target.disabled = true;
+        e.target.style.background = "var(--color-neutral-400)";
+        e.target.style.color = "white";
+
+        try {
+          // Import and use addProductsToCart function
+          const { addProductsToCart } = await import(
+            "../../scripts/__dropins__/storefront-cart/api.js"
+          );
+
+          // Add product to cart
+          await addProductsToCart([
+            {
+              sku: sku,
+              quantity: 1,
+            },
+          ]);
+
+          // Success feedback
+          e.target.textContent = "Added!";
+          e.target.style.background = "var(--color-positive-500)";
+          e.target.style.color = "white";
+
+          // Reset button after 2 seconds
+          setTimeout(() => {
+            e.target.textContent = originalText;
+            e.target.style.background = "";
+            e.target.style.color = "";
+            e.target.disabled = false;
+          }, 2000);
+        } catch (error) {
+          console.error("Error adding to cart:", error);
+
+          // Error feedback
+          e.target.textContent = "Error!";
+          e.target.style.background = "var(--color-alert-500)";
+          e.target.style.color = "white";
+
+          // Reset button after 2 seconds
+          setTimeout(() => {
+            e.target.textContent = originalText;
+            e.target.style.background = "";
+            e.target.style.color = "";
+            e.target.disabled = false;
+          }, 2000);
+        }
       });
     });
 
